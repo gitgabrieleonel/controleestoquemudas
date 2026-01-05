@@ -284,6 +284,7 @@
         .table-container {
             overflow-x: auto;
             margin-top: 20px;
+            -webkit-overflow-scrolling: touch;
         }
         
         table {
@@ -442,210 +443,270 @@
             color: var(--primary);
         }
         
-/* ========== RESPONSIVIDADE SIMPLES QUE FUNCIONA ========== */
-
-/* Para tablets e celulares */
-@media (max-width: 1023px) {
-    .container {
-        padding: 15px;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    .stats {
-        width: 100%;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .stat-box {
-        flex: 1;
-        min-width: 150px;
-        padding: 12px 15px;
-    }
-    
-    .tab {
-        padding: 15px 10px;
-        font-size: 0.9rem;
-    }
-    
-    .card-title {
-        font-size: 1.2rem;
-    }
-}
-
-/* Apenas para celulares (768px pra baixo) */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    
-    .logo h1 {
-        font-size: 1.4rem;
-    }
-    
-    .firebase-badge {
-        margin-left: 5px;
-        padding: 2px 6px;
-        font-size: 0.6rem;
-    }
-    
-    .tabs {
-        flex-direction: column;
-    }
-    
-    .tab {
-        width: 100%;
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .tab.active {
-        border-bottom: 3px solid var(--secondary);
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .form-group {
-        min-width: 100%;
-    }
-    
-    /* TABELAS COM SCROLL HORIZONTAL */
-    .table-container {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 5px;
-        margin: 15px -10px;
-        width: calc(100% + 20px);
-    }
-    
-    table {
-        min-width: 800px !important; /* FORÇA SCROLL */
-        width: 100%;
-        margin: 0;
-    }
-    
-    th {
-        position: sticky;
-        top: 0;
-        background: var(--primary);
-        z-index: 10;
-    }
-    
-    th, td {
-        padding: 12px 10px !important;
-        font-size: 0.9rem !important;
-        white-space: nowrap;
-    }
-    
-    /* Deixa colunas importantes mais visíveis */
-    #products-table td:nth-child(2),
-    #sales-history-table td:nth-child(2) {
-        min-width: 140px;
-        max-width: 140px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    /* Ações menores */
-    .actions {
-        min-width: 90px;
-    }
-    
-    .action-btn {
-        padding: 6px 8px;
-        font-size: 0.8rem;
-        min-width: 36px;
-    }
-    
-    .btn {
-        width: 100%;
-        justify-content: center;
-        padding: 14px;
-    }
-    
-    .modal-content {
-        width: 95%;
-        padding: 20px;
-        margin: 10px;
-    }
-}
-
-/* Para celulares pequenos (480px pra baixo) */
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .logo {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .logo h1 {
-        font-size: 1.2rem;
-    }
-    
-    .stats {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .stat-box {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-    }
-    
-    .card {
-        padding: 15px;
-    }
-    
-    .card-title {
-        font-size: 1.1rem;
-    }
-    
-    /* TABELAS MAIS COMPACTAS */
-    .table-container {
-        margin: 10px -5px;
-        width: calc(100% + 10px);
-    }
-    
-    table {
-        min-width: 700px !important;
-    }
-    
-    th, td {
-        padding: 10px 8px !important;
-        font-size: 0.85rem !important;
-    }
-    
-    /* Esconde colunas menos importantes */
-    #products-table th:nth-child(1),
-    #products-table td:nth-child(1),
-    #products-table th:nth-child(3),
-    #products-table td:nth-child(3),
-    #sales-history-table th:nth-child(4),
-    #sales-history-table td:nth-child(4),
-    #sales-history-table th:nth-child(6),
-    #sales-history-table td:nth-child(6) {
-        display: none;
-    }
-}
+        /* ======================== */
+        /* RESPONSIVIDADE MOBILE */
+        /* ======================== */
         
+        /* Tablet (768px - 1023px) */
+        @media (max-width: 1023px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .stats {
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .stat-box {
+                flex: 1;
+                min-width: 150px;
+                padding: 12px 15px;
+            }
+            
+            .tab {
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Celular (até 767px) */
+        @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            
+            .firebase-badge {
+                margin-left: 5px;
+                padding: 2px 6px;
+                font-size: 0.6rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .stat-box {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 15px;
+                text-align: left;
+            }
+            
+            .stat-value {
+                font-size: 1.3rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .tab.active {
+                border-bottom: 3px solid var(--secondary);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-group {
+                min-width: 100%;
+            }
+            
+            /* TABELAS COM SCROLL HORIZONTAL */
+            .table-container {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                margin: 10px -5px;
+                width: calc(100% + 10px);
+                padding: 5px;
+            }
+            
+            table {
+                min-width: 800px !important;
+            }
+            
+            th {
+                position: sticky;
+                left: 0;
+                background: var(--primary);
+                z-index: 10;
+            }
+            
+            th, td {
+                padding: 12px 10px !important;
+                font-size: 0.9rem !important;
+                white-space: nowrap;
+                min-width: 80px;
+            }
+            
+            /* Colunas específicas para produtos */
+            #products-table td:nth-child(2),
+            #sales-history-table td:nth-child(2) {
+                min-width: 140px;
+                max-width: 140px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .badge {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                min-width: 70px;
+                text-align: center;
+            }
+            
+            .actions {
+                min-width: 90px;
+                flex-direction: row;
+                gap: 5px;
+            }
+            
+            .action-btn {
+                padding: 6px 8px;
+                font-size: 0.8rem;
+                min-width: 36px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Celular pequeno (até 480px) */
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .table-container {
+                margin: 10px -10px;
+                width: calc(100% + 20px);
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+            
+            table {
+                min-width: 700px !important;
+            }
+            
+            th, td {
+                padding: 10px 8px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Esconde colunas menos importantes */
+            #products-table th:nth-child(1),
+            #products-table td:nth-child(1),
+            #products-table th:nth-child(3),
+            #products-table td:nth-child(3),
+            #sales-history-table th:nth-child(4),
+            #sales-history-table td:nth-child(4),
+            #sales-history-table th:nth-child(6),
+            #sales-history-table td:nth-child(6) {
+                display: none;
+            }
+            
+            /* Ajusta largura das colunas visíveis */
+            #products-table td:nth-child(2) {
+                min-width: 120px;
+                max-width: 120px;
+            }
+            
+            #products-table td:nth-child(4) {
+                font-weight: bold;
+                color: var(--primary);
+            }
+            
+            #products-table td:nth-child(5) {
+                color: var(--success);
+                font-weight: bold;
+            }
+            
+            #sales-history-table td:nth-child(2) {
+                min-width: 130px;
+                max-width: 130px;
+            }
+            
+            #sales-history-table td:nth-child(5) {
+                color: var(--success);
+                font-weight: bold;
+            }
+            
+            .summary-row {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            
+            .summary-row.total {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        
+        /* Para iOS evita zoom */
+        @supports (-webkit-touch-callout: none) {
+            input, select {
+                font-size: 16px;
+            }
+        }
     </style>
-    
 </head>
 <body>
     <header>
@@ -820,7 +881,7 @@
             </div>
         </div>
         
-        <!-- Tab: Histórico de Vendas -->
+        <!-- configurações do estpque de vemdas -->
         <div id="history" class="tab-content">
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-history"></i> Histórico de Vendas</h2>
@@ -854,7 +915,7 @@
         </div>
     </main>
     
-    <!-- Modal para editar produto -->
+    <!-- editar produto -->
     <div id="edit-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -899,6 +960,7 @@
     </div>
 
     <script>
+        // firebase meu, configurações
         const firebaseConfig = {
               apiKey: "AIzaSyCZOLoY3Vzh6zOcVIlsqbDbHXhG3yvGlMI",
   authDomain: "controlestoque-ff9f8.firebaseapp.com",
@@ -1081,77 +1143,158 @@
             });
         }
         
-        // Atualizar tabela de produtos
-        row.innerHTML = `
-    <td>${productId.substring(0, 6)}</td>
-    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${product.name}</td>
-    <td>${product.category}</td>
-    <td><strong style="color:#2c3e50">${product.quantity}</strong></td>
-    <td><strong style="color:#27ae60">R$ ${product.price.toFixed(2)}</strong></td>
-    <td>R$ ${(product.quantity * product.price).toFixed(2)}</td>
-    <td style="min-width:70px;">
-        <span class="badge ${product.quantity === 0 ? 'badge-danger' : product.quantity <= 5 ? 'badge-warning' : 'badge-success'}">
-            ${product.quantity === 0 ? 'ESG' : product.quantity <= 5 ? 'BAIXO' : 'OK'}
-        </span>
-    </td>
-    <td style="min-width:90px;">
-        <div class="actions">
-            <button class="action-btn btn-primary" onclick="editProduct('${productId}')">
-                <i class="fas fa-edit"></i>
-            </button>
-            <button class="action-btn btn-danger" onclick="removeProduct('${productId}')">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
-    </td>
-`;
-        // Atualizar tabela de produtos COM RESPONSIVIDADE
-function updateProductsTable() {
-    productsTableBody.innerHTML = '';
-    
-    if (Object.keys(products).length === 0) {
-        return;
-    }
-    
-    Object.keys(products).forEach(productId => {
-        const product = products[productId];
-        const totalValue = product.quantity * product.price;
-        let statusClass, statusText;
-        
-        if (product.quantity === 0) {
-            statusClass = 'badge-danger';
-            statusText = 'Esgotado';
-        } else if (product.quantity <= 5) {
-            statusClass = 'badge-warning';
-            statusText = 'Baixo Estoque';
-        } else {
-            statusClass = 'badge-success';
-            statusText = 'Disponível';
+
+               // Atualizar tabela de produtos OTIMIZADA
+        function updateProductsTable() {
+            productsTableBody.innerHTML = '';
+            
+            if (Object.keys(products).length === 0) {
+                return;
+            }
+            
+            Object.keys(products).forEach(productId => {
+                const product = products[productId];
+                const totalValue = product.quantity * product.price;
+                let statusClass, statusText;
+                
+                if (product.quantity === 0) {
+                    statusClass = 'badge-danger';
+                    statusText = 'Esgotado';
+                } else if (product.quantity <= 5) {
+                    statusClass = 'badge-warning';
+                    statusText = 'Baixo';
+                } else {
+                    statusClass = 'badge-success';
+                    statusText = 'OK';
+                }
+                
+                // Nome truncado para mobile
+                const displayName = product.name.length > 20 ? 
+                    product.name.substring(0, 18) + '...' : 
+                    product.name;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td title="${productId}">${productId.substring(0, 6)}...</td>
+                    <td title="${product.name}">${displayName}</td>
+                    <td>${product.category}</td>
+                    <td><strong>${product.quantity}</strong></td>
+                    <td><strong style="color:var(--success)">R$ ${product.price.toFixed(2)}</strong></td>
+                    <td>R$ ${totalValue.toFixed(2)}</td>
+                    <td><span class="badge ${statusClass}">${statusText}</span></td>
+                    <td>
+                        <div class="actions">
+                            <button class="action-btn btn-primary" onclick="editProduct('${productId}')" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn btn-danger" onclick="removeProduct('${productId}')" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                productsTableBody.appendChild(row);
+            });
         }
         
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td data-label="ID">${productId.substring(0, 8)}...</td>
-            <td data-label="Nome">${product.name}</td>
-            <td data-label="Categoria">${product.category}</td>
-            <td data-label="Quantidade">${product.quantity}</td>
-            <td data-label="Preço Unitário">R$ ${product.price.toFixed(2)}</td>
-            <td data-label="Valor Total">R$ ${totalValue.toFixed(2)}</td>
-            <td data-label="Status"><span class="badge ${statusClass}">${statusText}</span></td>
-            <td data-label="Ações">
-                <div class="actions">
-                    <button class="action-btn btn-primary" onclick="editProduct('${productId}')">
-                        <i class="fas fa-edit"></i> Editar
-                    </button>
-                    <button class="action-btn btn-danger" onclick="removeProduct('${productId}')">
-                        <i class="fas fa-trash"></i> Excluir
-                    </button>
-                </div>
-            </td>
-        `;
-        productsTableBody.appendChild(row);
-    });
-}
+                // Atualizar tabela de produtos OTIMIZADA
+        function updateProductsTable() {
+            productsTableBody.innerHTML = '';
+            
+            if (Object.keys(products).length === 0) {
+                return;
+            }
+            
+            Object.keys(products).forEach(productId => {
+                const product = products[productId];
+                const totalValue = product.quantity * product.price;
+                let statusClass, statusText;
+                
+                if (product.quantity === 0) {
+                    statusClass = 'badge-danger';
+                    statusText = 'Esgotado';
+                } else if (product.quantity <= 5) {
+                    statusClass = 'badge-warning';
+                    statusText = 'Baixo';
+                } else {
+                    statusClass = 'badge-success';
+                    statusText = 'OK';
+                }
+                
+                // Nome truncado para mobile
+                const displayName = product.name.length > 20 ? 
+                    product.name.substring(0, 18) + '...' : 
+                    product.name;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td title="${productId}">${productId.substring(0, 6)}...</td>
+                    <td title="${product.name}">${displayName}</td>
+                    <td>${product.category}</td>
+                    <td><strong>${product.quantity}</strong></td>
+                    <td><strong style="color:var(--success)">R$ ${product.price.toFixed(2)}</strong></td>
+                    <td>R$ ${totalValue.toFixed(2)}</td>
+                    <td><span class="badge ${statusClass}">${statusText}</span></td>
+                    <td>
+                        <div class="actions">
+                            <button class="action-btn btn-primary" onclick="editProduct('${productId}')" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn btn-danger" onclick="removeProduct('${productId}')" title="Excluir">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                productsTableBody.appendChild(row);
+            });
+        }
+        
+        // Atualizar histórico de vendas OTIMIZADO
+        function updateSalesHistory() {
+            salesHistoryBody.innerHTML = '';
+            
+            if (Object.keys(salesHistory).length === 0) {
+                return;
+            }
+            
+            // Ordenar vendas por data (mais recente primeiro)
+            const sortedSales = Object.keys(salesHistory)
+                .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
+                .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
+            
+            // Contar vendas de hoje
+            const today = new Date().toISOString().split('T')[0];
+            const todaySales = sortedSales.filter(sale => sale.date === today).length;
+            totalSalesEl.textContent = todaySales;
+            
+            // Popular tabela
+            sortedSales.slice(0, 30).forEach(sale => {
+                const date = new Date(sale.dateFull || sale.date);
+                const formattedDate = date.toLocaleDateString('pt-BR');
+                
+                // Nome truncado
+                const displayProduct = sale.productName.length > 25 ? 
+                    sale.productName.substring(0, 23) + '...' : 
+                    sale.productName;
+                
+                // Cliente truncado
+                const displayClient = sale.client.length > 15 && sale.client !== 'Não informado' ?
+                    sale.client.substring(0, 13) + '...' :
+                    sale.client;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${formattedDate}</strong></td>
+                    <td title="${sale.productName}">${displayProduct}</td>
+                    <td><strong>${sale.quantity}</strong></td>
+                    <td title="${sale.client}">${displayClient}</td>
+                    <td><strong style="color:var(--success)">R$ ${sale.total.toFixed(2)}</strong></td>
+                    <td>${sale.discount > 0 ? 'R$ ' + sale.discount.toFixed(2) : '-'}</td>
+                `;
+                salesHistoryBody.appendChild(row);
+            });
+        }
         
         // Adicionar produto ao Firebase
         function addProduct() {
@@ -1391,94 +1534,40 @@ function updateProductsTable() {
         }
         
         // Atualizar histórico de vendas
-      // Atualizar histórico de vendas OTIMIZADO PARA MOBILE
-row.innerHTML = `
-    <td><strong>${formattedDate}</strong></td>
-    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${sale.productName}</td>
-    <td><strong>${sale.quantity}</strong></td>
-    <td>${sale.client}</td>
-    <td><strong style="color:#27ae60">R$ ${sale.total.toFixed(2)}</strong></td>
-    <td>${sale.discount > 0 ? 'R$ ' + sale.discount.toFixed(2) : '-'}</td>
-`;
-    
-    // Ordenar vendas por data (mais recente primeiro)
-    const sortedSales = Object.keys(salesHistory)
-        .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
-        .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
-    
-    // Contar vendas de hoje
-    const today = new Date().toISOString().split('T')[0];
-    const todaySales = sortedSales.filter(sale => sale.date === today).length;
-    totalSalesEl.textContent = todaySales;
-    
-    // Popular tabela (mostrar apenas as 30 últimas vendas)
-    sortedSales.slice(0, 30).forEach(sale => {
-        const date = new Date(sale.dateFull || sale.date);
-        const formattedDate = date.toLocaleDateString('pt-BR');
-        
-        // Formatar valores
-        const totalFormatted = `R$ ${sale.total.toFixed(2)}`;
-        const discountFormatted = sale.discount > 0 ? `R$ ${sale.discount.toFixed(2)}` : '-';
-        
-        // Nome truncado
-        const productName = sale.productName.length > 25 
-            ? sale.productName.substring(0, 23) + '...' 
-            : sale.productName;
-        
-        // Cliente truncado
-        const clientName = sale.client.length > 15 && sale.client !== 'Não informado'
-            ? sale.client.substring(0, 13) + '...'
-            : sale.client;
-        
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td><strong>${formattedDate}</strong></td>
-            <td title="${sale.productName}">${productName}</td>
-            <td><strong>${sale.quantity}</strong></td>
-            <td title="${sale.client}">${clientName}</td>
-            <td style="color:var(--success); font-weight:bold;">${totalFormatted}</td>
-            <td>${discountFormatted}</td>
-        `;
-        salesHistoryBody.appendChild(row);
-    });
-}
-        // Atualizar histórico de vendas COM RESPONSIVIDADE
-row.innerHTML = `
-    <td><strong>${formattedDate}</strong></td>
-    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${sale.productName}</td>
-    <td><strong>${sale.quantity}</strong></td>
-    <td>${sale.client}</td>
-    <td><strong style="color:#27ae60">R$ ${sale.total.toFixed(2)}</strong></td>
-    <td>${sale.discount > 0 ? 'R$ ' + sale.discount.toFixed(2) : '-'}</td>
-`;
-    
-    // Ordenar vendas por data (mais recente primeiro)
-    const sortedSales = Object.keys(salesHistory)
-        .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
-        .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
-    
-    // Contar vendas de hoje
-    const today = new Date().toISOString().split('T')[0];
-    const todaySales = sortedSales.filter(sale => sale.date === today).length;
-    totalSalesEl.textContent = todaySales;
-    
-    // Popular tabela (mostrar apenas as 50 últimas vendas)
-    sortedSales.slice(0, 50).forEach(sale => {
-        const date = new Date(sale.dateFull || sale.date);
-        const formattedDate = date.toLocaleDateString('pt-BR');
-        
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td data-label="Data">${formattedDate}</td>
-            <td data-label="Produto">${sale.productName}</td>
-            <td data-label="Quantidade">${sale.quantity}</td>
-            <td data-label="Cliente">${sale.client}</td>
-            <td data-label="Valor Total">R$ ${sale.total.toFixed(2)}</td>
-            <td data-label="Desconto">R$ ${sale.discount.toFixed(2)}</td>
-        `;
-        salesHistoryBody.appendChild(row);
-    });
-}
+        function updateSalesHistory() {
+            salesHistoryBody.innerHTML = '';
+            
+            if (Object.keys(salesHistory).length === 0) {
+                return;
+            }
+            
+            // Ordenar vendas por data (mais recente primeiro)
+            const sortedSales = Object.keys(salesHistory)
+                .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
+                .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
+            
+            // Contar vendas de hoje
+            const today = new Date().toISOString().split('T')[0];
+            const todaySales = sortedSales.filter(sale => sale.date === today).length;
+            totalSalesEl.textContent = todaySales;
+            
+            // Popular tabela (mostrar apenas as 50 últimas vendas)
+            sortedSales.slice(0, 50).forEach(sale => {
+                const date = new Date(sale.dateFull || sale.date);
+                const formattedDate = date.toLocaleDateString('pt-BR');
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formattedDate}</td>
+                    <td>${sale.productName}</td>
+                    <td>${sale.quantity}</td>
+                    <td>${sale.client}</td>
+                    <td>R$ ${sale.total.toFixed(2)}</td>
+                    <td>R$ ${sale.discount.toFixed(2)}</td>
+                `;
+                salesHistoryBody.appendChild(row);
+            });
+        }
         
         // Atualizar estatísticas
         function updateStats() {
