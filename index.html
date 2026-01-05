@@ -442,39 +442,9 @@
             color: var(--primary);
         }
         
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .stats {
-                width: 100%;
-                justify-content: space-around;
-            }
-            
-            .form-row {
-                flex-direction: column;
-            }
-            
-            .tab {
-                padding: 15px 10px;
-                font-size: 0.9rem;
-            }
-        }
-        /* ======================== */
-/* RESPONSIVIDADE PARA MOBILE */
-/* ======================== */
+/* ========== RESPONSIVIDADE SIMPLES QUE FUNCIONA ========== */
 
-/* Telas grandes (desktop) - já tem */
-@media (min-width: 1024px) {
-    .container {
-        max-width: 1200px;
-    }
-}
-
-/* Tablets e telas médias (768px - 1023px) */
+/* Para tablets e celulares */
 @media (max-width: 1023px) {
     .container {
         padding: 15px;
@@ -499,13 +469,7 @@
         padding: 12px 15px;
     }
     
-    .tabs {
-        flex-wrap: wrap;
-    }
-    
     .tab {
-        flex: 1 0 auto;
-        min-width: 120px;
         padding: 15px 10px;
         font-size: 0.9rem;
     }
@@ -513,15 +477,10 @@
     .card-title {
         font-size: 1.2rem;
     }
-    
-    th, td {
-        padding: 12px 8px;
-        font-size: 0.9rem;
-    }
 }
 
-/* Celulares (576px - 767px) */
-@media (max-width: 767px) {
+/* Apenas para celulares (768px pra baixo) */
+@media (max-width: 768px) {
     body {
         font-size: 14px;
     }
@@ -536,24 +495,6 @@
         font-size: 0.6rem;
     }
     
-    .stats {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .stat-box {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 15px;
-        text-align: left;
-    }
-    
-    .stat-value {
-        font-size: 1.3rem;
-    }
-    
     .tabs {
         flex-direction: column;
     }
@@ -562,7 +503,6 @@
         width: 100%;
         padding: 15px;
         border-bottom: 1px solid #eee;
-        border-radius: 0;
     }
     
     .tab.active {
@@ -578,58 +518,71 @@
         min-width: 100%;
     }
     
-    /* Ajustar tabelas para mobile */
+    /* TABELAS COM SCROLL HORIZONTAL */
     .table-container {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
         border: 1px solid #ddd;
         border-radius: 8px;
-        margin-top: 10px;
+        padding: 5px;
+        margin: 15px -10px;
+        width: calc(100% + 20px);
     }
     
     table {
-        min-width: 600px; /* Força scroll horizontal */
+        min-width: 800px !important; /* FORÇA SCROLL */
+        width: 100%;
+        margin: 0;
+    }
+    
+    th {
+        position: sticky;
+        top: 0;
+        background: var(--primary);
+        z-index: 10;
     }
     
     th, td {
-        padding: 10px 8px;
-        font-size: 0.85rem;
+        padding: 12px 10px !important;
+        font-size: 0.9rem !important;
+        white-space: nowrap;
     }
     
-    /* Ajustar ações na tabela */
+    /* Deixa colunas importantes mais visíveis */
+    #products-table td:nth-child(2),
+    #sales-history-table td:nth-child(2) {
+        min-width: 140px;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Ações menores */
     .actions {
-        flex-direction: column;
-        gap: 5px;
+        min-width: 90px;
     }
     
     .action-btn {
-        width: 100%;
-        padding: 8px;
-        justify-content: center;
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        min-width: 36px;
     }
     
-    /* Ajustar botões principais */
     .btn {
         width: 100%;
         justify-content: center;
         padding: 14px;
-        font-size: 1rem;
     }
     
-    /* Ajustar modal */
     .modal-content {
         width: 95%;
         padding: 20px;
         margin: 10px;
     }
-    
-    /* Ajustar cards de estatísticas no header */
-    .header-content .stats {
-        width: 100%;
-        margin-top: 10px;
-    }
 }
 
-/* Celulares pequenos (até 575px) */
-@media (max-width: 575px) {
+/* Para celulares pequenos (480px pra baixo) */
+@media (max-width: 480px) {
     .container {
         padding: 10px;
     }
@@ -641,7 +594,18 @@
     
     .logo h1 {
         font-size: 1.2rem;
-        text-align: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-box {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
     
     .card {
@@ -650,377 +614,33 @@
     
     .card-title {
         font-size: 1.1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
     }
     
-    /* Transformar tabela de produtos em cards em telas muito pequenas */
-    #products-table {
-        display: block;
-    }
-    
-    #products-table thead {
-        display: none;
-    }
-    
-    #products-table tbody, 
-    #products-table tr, 
-    #products-table td {
-        display: block;
-        width: 100%;
-    }
-    
-    #products-table tr {
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        position: relative;
-    }
-    
-    #products-table td {
-        padding: 8px 0;
-        border: none;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    #products-table td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: var(--primary);
-        margin-right: 10px;
-    }
-    
-    #products-table td:first-child {
-        font-weight: bold;
-        background-color: #f8f9fa;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-    
-    #products-table td:last-child {
-        border-top: 1px solid #eee;
-        padding-top: 15px;
-        margin-top: 10px;
-    }
-    
-    /* Aplicar data-labels para cada célula */
-    #products-table td:nth-child(1):before { content: "ID:"; }
-    #products-table td:nth-child(2):before { content: "Nome:"; }
-    #products-table td:nth-child(3):before { content: "Categoria:"; }
-    #products-table td:nth-child(4):before { content: "Quantidade:"; }
-    #products-table td:nth-child(5):before { content: "Preço:"; }
-    #products-table td:nth-child(6):before { content: "Valor Total:"; }
-    #products-table td:nth-child(7):before { content: "Status:"; }
-    #products-table td:nth-child(8):before { content: "Ações:"; }
-    
-    /* Ajustar a tabela de histórico de vendas */
-    #sales-history-table {
-        display: block;
-    }
-    
-    #sales-history-table thead {
-        display: none;
-    }
-    
-    #sales-history-table tbody, 
-    #sales-history-table tr, 
-    #sales-history-table td {
-        display: block;
-        width: 100%;
-    }
-    
-    #sales-history-table tr {
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-    }
-    
-    #sales-history-table td {
-        padding: 8px 0;
-        border: none;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    #sales-history-table td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: var(--primary);
-        margin-right: 10px;
-    }
-    
-    /* Data-labels para tabela de histórico */
-    #sales-history-table td:nth-child(1):before { content: "Data:"; }
-    #sales-history-table td:nth-child(2):before { content: "Produto:"; }
-    #sales-history-table td:nth-child(3):before { content: "Quantidade:"; }
-    #sales-history-table td:nth-child(4):before { content: "Cliente:"; }
-    #sales-history-table td:nth-child(5):before { content: "Valor Total:"; }
-    #sales-history-table td:nth-child(6):before { content: "Desconto:"; }
-    
-    /* Ajustar sale summary */
-    .sale-summary {
-        padding: 15px;
-    }
-    
-    .summary-row {
-        flex-direction: column;
-        gap: 5px;
-        text-align: center;
-    }
-    
-    .summary-row.total {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    /* Ajustar status indicator */
-    .connection-status {
-        justify-content: center;
-        font-size: 0.75rem;
-    }
-}
-
-/* Telas muito pequenas (até 360px) */
-@media (max-width: 360px) {
-    .logo h1 {
-        font-size: 1rem;
-    }
-    
-    .stat-value {
-        font-size: 1.1rem;
-    }
-    
-    .tab {
-        padding: 12px;
-        font-size: 0.8rem;
-    }
-    
-    .card-title {
-        font-size: 1rem;
-    }
-    
-    input, select, .btn {
-        padding: 10px;
-    }
-}
-
-/* Ajustes específicos para iOS */
-@supports (-webkit-touch-callout: none) {
-    input, select {
-        font-size: 16px; /* Evita zoom automático no iOS */
-    }
-}/* ======================== */
-/* CORREÇÃO DAS TABELAS MOBILE */
-/* ======================== */
-
-/* Para telas pequenas (até 767px) */
-@media (max-width: 767px) {
-    /* REMOVER O LAYOUT DE CARD PARA TABELAS */
-    /* Vamos manter as tabelas mas com scroll horizontal */
-    
+    /* TABELAS MAIS COMPACTAS */
     .table-container {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        margin: 10px -5px;
+        width: calc(100% + 10px);
     }
     
     table {
-        min-width: 650px; /* Largura mínima para não quebrar */
-        width: 100%;
-        margin: 0;
-    }
-    
-    /* HEADER FIXO PARA TABELAS LONGA */
-    #products-table thead,
-    #sales-history-table thead {
-        display: table-header-group;
-    }
-    
-    /* CÉLULAS MAIS COMPACTAS */
-    th, td {
-        padding: 10px 8px;
-        font-size: 0.85rem;
-        white-space: nowrap; /* Não quebra o texto */
-        min-width: 80px; /* Largura mínima das células */
-    }
-    
-    /* CABEÇALHOS COLORIDOS PARA DIFERENCIAR */
-    th {
-        background-color: var(--primary);
-        color: white;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-    
-    /* COLUNAS IMPORTANTES MAIORES */
-    #products-table td:nth-child(2), /* Nome do produto */
-    #sales-history-table td:nth-child(2) { /* Nome do produto */
-        min-width: 120px;
-        white-space: normal; /* Permite quebra de linha */
-    }
-    
-    /* COLUNAS DE VALOR */
-    #products-table td:nth-child(5), /* Preço Unitário */
-    #products-table td:nth-child(6), /* Valor Total */
-    #sales-history-table td:nth-child(5), /* Valor Total */
-    #sales-history-table td:nth-child(6) { /* Desconto */
-        min-width: 100px;
-    }
-    
-    /* BADGE DE STATUS MELHORADO */
-    .badge {
-        padding: 4px 8px;
-        font-size: 0.75rem;
-        display: inline-block;
-        min-width: 85px;
-        text-align: center;
-    }
-    
-    /* AÇÕES EM LINHA */
-    .actions {
-        display: flex;
-        gap: 5px;
-    }
-    
-    .action-btn {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-        min-width: 45px;
-    }
-    
-    .action-btn i {
-        font-size: 0.9rem;
-    }
-    
-    /* ESCONDER TEXTO DOS BOTÕES, MANTER APENAS ÍCONES */
-    .action-btn:not(:only-child) {
-        min-width: 40px;
-        padding: 6px;
-        justify-content: center;
-    }
-    
-    .action-btn span,
-    .action-btn:after {
-        display: none;
-    }
-}
-
-/* Para telas MUITO pequenas (até 480px) */
-@media (max-width: 480px) {
-    .table-container {
-        margin: 0 -10px;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-    }
-    
-    table {
-        min-width: 600px;
+        min-width: 700px !important;
     }
     
     th, td {
-        padding: 8px 6px;
-        font-size: 0.8rem;
+        padding: 10px 8px !important;
+        font-size: 0.85rem !important;
     }
     
-    /* REDUZIR COLUNAS NÃO ESSENCIAIS */
-    #products-table th:nth-child(1), /* ID */
+    /* Esconde colunas menos importantes */
+    #products-table th:nth-child(1),
     #products-table td:nth-child(1),
-    #products-table th:nth-child(3), /* Categoria */
+    #products-table th:nth-child(3),
     #products-table td:nth-child(3),
-    #sales-history-table th:nth-child(4), /* Cliente */
+    #sales-history-table th:nth-child(4),
     #sales-history-table td:nth-child(4),
-    #sales-history-table th:nth-child(6), /* Desconto */
+    #sales-history-table th:nth-child(6),
     #sales-history-table td:nth-child(6) {
         display: none;
-    }
-    
-    /* COLUNAS VISÍVEIS MAIORES */
-    #products-table td:nth-child(2) { /* Nome */
-        min-width: 140px;
-        max-width: 140px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    #products-table td:nth-child(4) { /* Quantidade */
-        font-weight: bold;
-        color: var(--primary);
-    }
-    
-    #products-table td:nth-child(5) { /* Preço */
-        color: var(--success);
-        font-weight: bold;
-    }
-    
-    #products-table td:nth-child(7) { /* Status */
-        min-width: 70px;
-    }
-    
-    /* HISTÓRICO DE VENDAS SIMPLIFICADO */
-    #sales-history-table td:nth-child(2) { /* Produto */
-        min-width: 130px;
-        max-width: 130px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    #sales-history-table td:nth-child(5) { /* Valor Total */
-        color: var(--success);
-        font-weight: bold;
-    }
-}
-
-/* Para telas pequenas mas não tão pequenas (481px - 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-    /* Mostrar todas as colunas mas mais compactas */
-    th, td {
-        padding: 10px 8px;
-        font-size: 0.85rem;
-    }
-    
-    /* Ajustar largura específica das colunas */
-    #products-table th:nth-child(1),
-    #products-table td:nth-child(1) { /* ID */
-        display: none; /* Esconder ID para ganhar espaço */
-    }
-    
-    #products-table th:nth-child(2),
-    #products-table td:nth-child(2) { /* Nome */
-        min-width: 150px;
-        max-width: 150px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    #products-table th:nth-child(8),
-    #products-table td:nth-child(8) { /* Ações */
-        min-width: 100px;
-    }
-    
-    .actions {
-        flex-direction: row;
-        gap: 5px;
-    }
-    
-    .action-btn {
-        min-width: 40px;
-        padding: 6px;
     }
 }
         
@@ -1462,52 +1082,29 @@
         }
         
         // Atualizar tabela de produtos
-        function updateProductsTable() {
-            productsTableBody.innerHTML = '';
-            
-            if (Object.keys(products).length === 0) {
-                return;
-            }
-            
-            Object.keys(products).forEach(productId => {
-                const product = products[productId];
-                const totalValue = product.quantity * product.price;
-                let statusClass, statusText;
-                
-                if (product.quantity === 0) {
-                    statusClass = 'badge-danger';
-                    statusText = 'Esgotado';
-                } else if (product.quantity <= 5) {
-                    statusClass = 'badge-warning';
-                    statusText = 'Baixo Estoque';
-                } else {
-                    statusClass = 'badge-success';
-                    statusText = 'Disponível';
-                }
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${productId.substring(0, 8)}...</td>
-                    <td>${product.name}</td>
-                    <td>${product.category}</td>
-                    <td>${product.quantity}</td>
-                    <td>R$ ${product.price.toFixed(2)}</td>
-                    <td>R$ ${totalValue.toFixed(2)}</td>
-                    <td><span class="badge ${statusClass}">${statusText}</span></td>
-                    <td>
-                        <div class="actions">
-                            <button class="action-btn btn-primary" onclick="editProduct('${productId}')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="action-btn btn-danger" onclick="removeProduct('${productId}')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                `;
-                productsTableBody.appendChild(row);
-            });
-        }
+        row.innerHTML = `
+    <td>${productId.substring(0, 6)}</td>
+    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${product.name}</td>
+    <td>${product.category}</td>
+    <td><strong style="color:#2c3e50">${product.quantity}</strong></td>
+    <td><strong style="color:#27ae60">R$ ${product.price.toFixed(2)}</strong></td>
+    <td>R$ ${(product.quantity * product.price).toFixed(2)}</td>
+    <td style="min-width:70px;">
+        <span class="badge ${product.quantity === 0 ? 'badge-danger' : product.quantity <= 5 ? 'badge-warning' : 'badge-success'}">
+            ${product.quantity === 0 ? 'ESG' : product.quantity <= 5 ? 'BAIXO' : 'OK'}
+        </span>
+    </td>
+    <td style="min-width:90px;">
+        <div class="actions">
+            <button class="action-btn btn-primary" onclick="editProduct('${productId}')">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="action-btn btn-danger" onclick="removeProduct('${productId}')">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </td>
+`;
         // Atualizar tabela de produtos COM RESPONSIVIDADE
 function updateProductsTable() {
     productsTableBody.innerHTML = '';
@@ -1795,12 +1392,14 @@ function updateProductsTable() {
         
         // Atualizar histórico de vendas
       // Atualizar histórico de vendas OTIMIZADO PARA MOBILE
-function updateSalesHistory() {
-    salesHistoryBody.innerHTML = '';
-    
-    if (Object.keys(salesHistory).length === 0) {
-        return;
-    }
+row.innerHTML = `
+    <td><strong>${formattedDate}</strong></td>
+    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${sale.productName}</td>
+    <td><strong>${sale.quantity}</strong></td>
+    <td>${sale.client}</td>
+    <td><strong style="color:#27ae60">R$ ${sale.total.toFixed(2)}</strong></td>
+    <td>${sale.discount > 0 ? 'R$ ' + sale.discount.toFixed(2) : '-'}</td>
+`;
     
     // Ordenar vendas por data (mais recente primeiro)
     const sortedSales = Object.keys(salesHistory)
@@ -1844,12 +1443,14 @@ function updateSalesHistory() {
     });
 }
         // Atualizar histórico de vendas COM RESPONSIVIDADE
-function updateSalesHistory() {
-    salesHistoryBody.innerHTML = '';
-    
-    if (Object.keys(salesHistory).length === 0) {
-        return;
-    }
+row.innerHTML = `
+    <td><strong>${formattedDate}</strong></td>
+    <td style="min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;">${sale.productName}</td>
+    <td><strong>${sale.quantity}</strong></td>
+    <td>${sale.client}</td>
+    <td><strong style="color:#27ae60">R$ ${sale.total.toFixed(2)}</strong></td>
+    <td>${sale.discount > 0 ? 'R$ ' + sale.discount.toFixed(2) : '-'}</td>
+`;
     
     // Ordenar vendas por data (mais recente primeiro)
     const sortedSales = Object.keys(salesHistory)
