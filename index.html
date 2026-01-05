@@ -818,8 +818,214 @@
     input, select {
         font-size: 16px; /* Evita zoom automático no iOS */
     }
+}/* ======================== */
+/* CORREÇÃO DAS TABELAS MOBILE */
+/* ======================== */
+
+/* Para telas pequenas (até 767px) */
+@media (max-width: 767px) {
+    /* REMOVER O LAYOUT DE CARD PARA TABELAS */
+    /* Vamos manter as tabelas mas com scroll horizontal */
+    
+    .table-container {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+    }
+    
+    table {
+        min-width: 650px; /* Largura mínima para não quebrar */
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* HEADER FIXO PARA TABELAS LONGA */
+    #products-table thead,
+    #sales-history-table thead {
+        display: table-header-group;
+    }
+    
+    /* CÉLULAS MAIS COMPACTAS */
+    th, td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap; /* Não quebra o texto */
+        min-width: 80px; /* Largura mínima das células */
+    }
+    
+    /* CABEÇALHOS COLORIDOS PARA DIFERENCIAR */
+    th {
+        background-color: var(--primary);
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    /* COLUNAS IMPORTANTES MAIORES */
+    #products-table td:nth-child(2), /* Nome do produto */
+    #sales-history-table td:nth-child(2) { /* Nome do produto */
+        min-width: 120px;
+        white-space: normal; /* Permite quebra de linha */
+    }
+    
+    /* COLUNAS DE VALOR */
+    #products-table td:nth-child(5), /* Preço Unitário */
+    #products-table td:nth-child(6), /* Valor Total */
+    #sales-history-table td:nth-child(5), /* Valor Total */
+    #sales-history-table td:nth-child(6) { /* Desconto */
+        min-width: 100px;
+    }
+    
+    /* BADGE DE STATUS MELHORADO */
+    .badge {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        display: inline-block;
+        min-width: 85px;
+        text-align: center;
+    }
+    
+    /* AÇÕES EM LINHA */
+    .actions {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .action-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        min-width: 45px;
+    }
+    
+    .action-btn i {
+        font-size: 0.9rem;
+    }
+    
+    /* ESCONDER TEXTO DOS BOTÕES, MANTER APENAS ÍCONES */
+    .action-btn:not(:only-child) {
+        min-width: 40px;
+        padding: 6px;
+        justify-content: center;
+    }
+    
+    .action-btn span,
+    .action-btn:after {
+        display: none;
+    }
 }
+
+/* Para telas MUITO pequenas (até 480px) */
+@media (max-width: 480px) {
+    .table-container {
+        margin: 0 -10px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    th, td {
+        padding: 8px 6px;
+        font-size: 0.8rem;
+    }
+    
+    /* REDUZIR COLUNAS NÃO ESSENCIAIS */
+    #products-table th:nth-child(1), /* ID */
+    #products-table td:nth-child(1),
+    #products-table th:nth-child(3), /* Categoria */
+    #products-table td:nth-child(3),
+    #sales-history-table th:nth-child(4), /* Cliente */
+    #sales-history-table td:nth-child(4),
+    #sales-history-table th:nth-child(6), /* Desconto */
+    #sales-history-table td:nth-child(6) {
+        display: none;
+    }
+    
+    /* COLUNAS VISÍVEIS MAIORES */
+    #products-table td:nth-child(2) { /* Nome */
+        min-width: 140px;
+        max-width: 140px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #products-table td:nth-child(4) { /* Quantidade */
+        font-weight: bold;
+        color: var(--primary);
+    }
+    
+    #products-table td:nth-child(5) { /* Preço */
+        color: var(--success);
+        font-weight: bold;
+    }
+    
+    #products-table td:nth-child(7) { /* Status */
+        min-width: 70px;
+    }
+    
+    /* HISTÓRICO DE VENDAS SIMPLIFICADO */
+    #sales-history-table td:nth-child(2) { /* Produto */
+        min-width: 130px;
+        max-width: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #sales-history-table td:nth-child(5) { /* Valor Total */
+        color: var(--success);
+        font-weight: bold;
+    }
+}
+
+/* Para telas pequenas mas não tão pequenas (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    /* Mostrar todas as colunas mas mais compactas */
+    th, td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Ajustar largura específica das colunas */
+    #products-table th:nth-child(1),
+    #products-table td:nth-child(1) { /* ID */
+        display: none; /* Esconder ID para ganhar espaço */
+    }
+    
+    #products-table th:nth-child(2),
+    #products-table td:nth-child(2) { /* Nome */
+        min-width: 150px;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    #products-table th:nth-child(8),
+    #products-table td:nth-child(8) { /* Ações */
+        min-width: 100px;
+    }
+    
+    .actions {
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .action-btn {
+        min-width: 40px;
+        padding: 6px;
+    }
+}
+        
     </style>
+    
 </head>
 <body>
     <header>
@@ -1590,40 +1796,55 @@ function updateProductsTable() {
         }
         
         // Atualizar histórico de vendas
-        function updateSalesHistory() {
-            salesHistoryBody.innerHTML = '';
-            
-            if (Object.keys(salesHistory).length === 0) {
-                return;
-            }
-            
-            // Ordenar vendas por data (mais recente primeiro)
-            const sortedSales = Object.keys(salesHistory)
-                .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
-                .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
-            
-            // Contar vendas de hoje
-            const today = new Date().toISOString().split('T')[0];
-            const todaySales = sortedSales.filter(sale => sale.date === today).length;
-            totalSalesEl.textContent = todaySales;
-            
-            // Popular tabela (mostrar apenas as 50 últimas vendas)
-            sortedSales.slice(0, 50).forEach(sale => {
-                const date = new Date(sale.dateFull || sale.date);
-                const formattedDate = date.toLocaleDateString('pt-BR');
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${formattedDate}</td>
-                    <td>${sale.productName}</td>
-                    <td>${sale.quantity}</td>
-                    <td>${sale.client}</td>
-                    <td>R$ ${sale.total.toFixed(2)}</td>
-                    <td>R$ ${sale.discount.toFixed(2)}</td>
-                `;
-                salesHistoryBody.appendChild(row);
-            });
-        }
+      // Atualizar histórico de vendas OTIMIZADO PARA MOBILE
+function updateSalesHistory() {
+    salesHistoryBody.innerHTML = '';
+    
+    if (Object.keys(salesHistory).length === 0) {
+        return;
+    }
+    
+    // Ordenar vendas por data (mais recente primeiro)
+    const sortedSales = Object.keys(salesHistory)
+        .map(saleId => ({ id: saleId, ...salesHistory[saleId] }))
+        .sort((a, b) => new Date(b.dateFull || b.date) - new Date(a.dateFull || a.date));
+    
+    // Contar vendas de hoje
+    const today = new Date().toISOString().split('T')[0];
+    const todaySales = sortedSales.filter(sale => sale.date === today).length;
+    totalSalesEl.textContent = todaySales;
+    
+    // Popular tabela (mostrar apenas as 30 últimas vendas)
+    sortedSales.slice(0, 30).forEach(sale => {
+        const date = new Date(sale.dateFull || sale.date);
+        const formattedDate = date.toLocaleDateString('pt-BR');
+        
+        // Formatar valores
+        const totalFormatted = `R$ ${sale.total.toFixed(2)}`;
+        const discountFormatted = sale.discount > 0 ? `R$ ${sale.discount.toFixed(2)}` : '-';
+        
+        // Nome truncado
+        const productName = sale.productName.length > 25 
+            ? sale.productName.substring(0, 23) + '...' 
+            : sale.productName;
+        
+        // Cliente truncado
+        const clientName = sale.client.length > 15 && sale.client !== 'Não informado'
+            ? sale.client.substring(0, 13) + '...'
+            : sale.client;
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><strong>${formattedDate}</strong></td>
+            <td title="${sale.productName}">${productName}</td>
+            <td><strong>${sale.quantity}</strong></td>
+            <td title="${sale.client}">${clientName}</td>
+            <td style="color:var(--success); font-weight:bold;">${totalFormatted}</td>
+            <td>${discountFormatted}</td>
+        `;
+        salesHistoryBody.appendChild(row);
+    });
+}
         // Atualizar histórico de vendas COM RESPONSIVIDADE
 function updateSalesHistory() {
     salesHistoryBody.innerHTML = '';
